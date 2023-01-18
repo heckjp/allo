@@ -16,6 +16,11 @@ const routes = [
     name: 'add',
     component: FormView
   },
+  {
+    path:'/edit/:id',
+    name:'edit',
+    component:FormView
+  }
 ]
 
 const router = new VueRouter({
