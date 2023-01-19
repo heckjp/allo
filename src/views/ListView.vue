@@ -13,10 +13,10 @@
           :items-per-page="5"
           class="elevation-1"
         >
-          <template  v-slot:[`item.actions`]="{ item }">
-            <v-icon small class="mr-2" @click="editPeople(item.id)">mdi-pencil</v-icon>
-            <v-icon small @click="deletePeople(item.id)">mdi-delete</v-icon>
-          </template>
+            <template  v-slot:item.actions="{ item }">
+              <v-icon small class="mr-2" @click="editPeople(item.id)">mdi-pencil</v-icon>
+              <v-icon small @click="deletePeople(item.id)">mdi-delete</v-icon>
+            </template>
         </v-data-table>
     </v-col>
   </v-row>
@@ -38,7 +38,7 @@
             {text: 'CPF',value:'cpf'},
             {text: 'Telefone',value:'phoneNumber'},
             {text: 'E-mail',value:'email'},
-            {text: 'Ações', action:'actions',sortable:false}
+            {text: 'Ações', value:'actions',sortable:false}
           ]
       }
     },
@@ -52,7 +52,9 @@
         console.log(id);
       },
       deletePeople:function(id){
-        console.log(id);
+        this.$http.delete(this.api+"/people/"+id).then((res)=>{
+          console.log(res);
+        })
       }
     },
     mounted(){
