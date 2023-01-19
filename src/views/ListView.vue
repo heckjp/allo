@@ -12,7 +12,12 @@
           :items="people"
           :items-per-page="5"
           class="elevation-1"
-        ></v-data-table>
+        >
+          <template  v-slot:[`item.actions`]="{ item }">
+            <v-icon small class="mr-2" @click="editPeople(item.id)">mdi-pencil</v-icon>
+            <v-icon small @click="deletePeople(item.id)">mdi-delete</v-icon>
+          </template>
+        </v-data-table>
     </v-col>
   </v-row>
  </v-container>
@@ -32,7 +37,8 @@
             {text: 'Nome',value:'name'},
             {text: 'CPF',value:'cpf'},
             {text: 'Telefone',value:'phoneNumber'},
-            {text: 'E-mail',value:'e-mail'},
+            {text: 'E-mail',value:'email'},
+            {text: 'Ações', action:'actions',sortable:false}
           ]
       }
     },
@@ -41,6 +47,12 @@
         this.$http.get(this.api+"/people").then((res)=>{
           this.people = res.data;
         })
+      },
+      editPeople: function(id){
+        console.log(id);
+      },
+      deletePeople:function(id){
+        console.log(id);
       }
     },
     mounted(){

@@ -1,3 +1,11 @@
 {
-    "people":[]
+  "people": [
+    {
+      "name": "João da Silva",
+      "phoneNumber": "(00)0000-0000",
+      "cpf": "000.000.000-00",
+      "email": "email@email.com",
+      "id": 1
+    }
+  ]
 }
