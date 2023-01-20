@@ -64,21 +64,23 @@
         </v-col>
       </v-row>
       <v-row class="ml-auto">
-        <v-col> 
+        <v-col md="1"> 
            <v-btn
-      :disabled="!valid"
-      color="primary"
-      @click="save()"
-    >
-      Enviar
-    </v-btn>
-    <v-btn
-      class="ml-2"
-      color="error"
-      @click="cancel()"
-    >
-      Cancelar
-    </v-btn>
+            :disabled="!valid"
+            color="primary"
+            @click="save()"
+          >
+            Enviar
+          </v-btn>
+        </v-col>
+        <v-col md="1">
+            <v-btn
+              class="ml-2"
+              color="error"
+              @click="cancel()"
+            >
+              Cancelar
+            </v-btn>
         </v-col>
       </v-row>
           </v-form>
