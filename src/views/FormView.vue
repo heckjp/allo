@@ -8,7 +8,7 @@
     <v-row class="mt-4">
       <v-col>
         <v-card class="elevation-1">
-          <v-form>
+          <v-form v-model="valid">
             <v-row class="mx-auto">
         <v-col
           cols="12"
@@ -18,6 +18,8 @@
             v-model="form.name"
             label="Nome completo"
             required
+            :rules="rules.name"
+
           ></v-text-field>
         </v-col>
 
@@ -25,9 +27,11 @@
           cols="12"
           md="6"
         >
-          <v-text-field
+          <v-text-field 
+            v-mask="'###.###.###-##'"
             v-model="form.cpf"
             label="CPF"
+            :rules="rules.cpf"
             required
           ></v-text-field>
         </v-col>
@@ -36,9 +40,11 @@
           cols="12"
           md="6"
         >
-          <v-text-field
+          <v-text-field 
+            v-mask="'(##)-#####-####'"
             v-model="form.phoneNumber"
             label="Telefone"
+            :rules="rules.phoneNumber"
             required
           ></v-text-field>
           
@@ -50,7 +56,9 @@
           <v-text-field
             v-model="form.email"
             label="E-mail"
+            :rules="rules.email"
             required
+            type="e-mail"
           ></v-text-field>
           
         </v-col>
@@ -58,6 +66,7 @@
       <v-row class="ml-auto">
         <v-col> 
            <v-btn
+      :disabled="!valid"
       color="primary"
       @click="save()"
     >
@@ -77,6 +86,7 @@
     name: 'FormView',
     data(){
       return{
+        valid:true,
         id:undefined,
         people:[],
         api:'http://localhost:8080/api',
@@ -87,7 +97,12 @@
             cpf:'',
             email:''
           },
-        
+          rules: {
+            name: [val => (val || '').length > 0 || 'O campo Nome obrigatório'],
+            phoneNumber: [val => !!val  || 'O campo Telefone é obrigatório', val=>val.length ==15 || 'Telefone inválido'],
+            cpf: [val => !!val  || 'O campo CPF é obrigatório', val=>val.length ==14 || 'CPF inválido'],
+            email: [ val => !!val || 'E-mail é obrigatório',val => /.+@.+\..+/.test(val) || 'E-mail inválido',]
+          }
       }
     },
     methods:{
@@ -116,8 +131,9 @@
             }
           })
         }
-      }
+      },
     },
+    
     mounted(){
      this.id = this.$route.params.id;
      if(this.id!==undefined){

@@ -6,6 +6,13 @@
       "cpf": "4344",
       "email": "testes",
       "id": 2
+    },
+    {
+      "name": "",
+      "phoneNumber": "",
+      "cpf": "",
+      "email": "",
+      "id": 3
     }
   ]
 }
