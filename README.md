@@ -1,24 +1,36 @@
-# allo
+# Teste Grupo Allo
+ 
+ Aplicação de teste  para a empresa Allo
 
-## Project setup
+## Como rodar o projeto
+
+Após o clone do projeto, rode o comando 
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Frontend
+
+Digite o comando: 
+
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### Backend
 
-### Lints and fixes files
-```
-npm run lint
-```
+O projeto conta com uma base de dados no arquivo db.json que pode ser acessada através do json-server (fornecido na instalação dos pacotes quando ). Se faz necessário rodar esse servidor para comunicação com a api de cadastro.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Para rodar o json server digite o comando:
+ ```
+ json-server --watch db.json
+
+## Bibliotecas utilizadas
+ - Vuetify
+ - Axios
+ - VueAxios
+ - V-mask
+ - VueSweetAlert2
+ - Json Server
+
+
