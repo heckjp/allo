@@ -3,7 +3,7 @@
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="text-h6">
-            Cadastro de Pessoas
+            <v-img src="../assets/allo_logo.png"></v-img>
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
