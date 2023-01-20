@@ -57,9 +57,25 @@
        this.$router.push({ path: `/edit/${id}` })
       },
       deletePeople:function(id){
-        this.$http.delete(this.api+"/people/"+id).then((res)=>{
-          console.log(res);
-          this.getPeople();
+           this.$swal({
+          title: 'Deseja excluir este registro?',
+          showCloseButton: true,
+           showCancelButton: true,
+          confirmButtonText: 'Sim',
+          cancelButtonText: 'Não',
+          confirmButtonColor:"#068c08",
+          cancelButtonColor:"#b51105"
+        }).then((res)=>{
+          if (res.isConfirmed){
+            this.$http.delete(this.api+"/people/"+id).then((result)=>{
+                if(result.status=='200'){
+                  this.$swal("Sucesso!","Registro excluído com sucesso",'success')
+                  this.getPeople();
+                } else {
+                this.$swal("Erro!","Erro ao tentar excluir o cadastro",'error')
+                }
+            })
+        }
         })
       }
     },

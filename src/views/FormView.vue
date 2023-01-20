@@ -9,7 +9,7 @@
       <v-col>
         <v-card class="elevation-1">
           <v-form>
-            <v-row>
+            <v-row class="mx-auto">
         <v-col
           cols="12"
           md="6"
@@ -86,7 +86,7 @@
             phoneNumber:'',
             cpf:'',
             email:''
-          }
+          },
         
       }
     },
@@ -99,14 +99,23 @@
       save(){
         if(this.id==undefined){
           this.$http.post(this.api+'/people',this.form).then((res)=>{
-            console.log(res.data)
+            console.log(res)
+            if(res.status=='200'){
+              this.$swal("Sucesso!","Cadastro realizado com sucesso",'success')
+            } else {
+              this.$swal("Erro!","Ocorreu um erro ao efetuar o cadastro",'error')
+            }
           })
         } else {
           this.$http.put(this.api+'people/'+this.id,this.form).then((res)=>{
-            console.log(res.data)
+            console.log(res)
+           if(res.status=='200'){
+              this.$swal("Sucesso!","Cadastro editado com sucesso",'success')
+            } else {
+                this.$swal("Erro!","Erro ao editar cadastro",'error')
+            }
           })
         }
-        
       }
     },
     mounted(){
@@ -116,4 +125,5 @@
      }
     }
   }
+
 </script>

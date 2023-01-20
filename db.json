@@ -1,3 +1,11 @@
 {
-  "people": []
+  "people": [
+    {
+      "name": "testee",
+      "phoneNumber": "333",
+      "cpf": "4344",
+      "email": "testes",
+      "id": 2
+    }
+  ]
 }
