@@ -20,7 +20,7 @@
              <template
         v-slot:no-data
       >
-        Nenhum registro encontrado
+        Nenhum registro encontrado'
       </template>
         </v-data-table>
     </v-col>
