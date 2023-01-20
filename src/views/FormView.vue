@@ -72,6 +72,13 @@
     >
       Enviar
     </v-btn>
+    <v-btn
+      class="ml-2"
+      color="error"
+      @click="cancel()"
+    >
+      Cancelar
+    </v-btn>
         </v-col>
       </v-row>
           </v-form>
@@ -89,7 +96,7 @@
         valid:true,
         id:undefined,
         people:[],
-        api:'http://localhost:8080/api',
+        api:process.env.VUE_APP_API_URL,
         form: 
           {
             name:'',
@@ -114,16 +121,16 @@
       save(){
         if(this.id==undefined){
           this.$http.post(this.api+'/people',this.form).then((res)=>{
-            console.log(res)
-            if(res.status=='200'){
+            if(res.status=='201'){
               this.$swal("Sucesso!","Cadastro realizado com sucesso",'success')
+              this.$router.push({ path: `/`} )
             } else {
+              console.log(res);
               this.$swal("Erro!","Ocorreu um erro ao efetuar o cadastro",'error')
             }
           })
         } else {
-          this.$http.put(this.api+'people/'+this.id,this.form).then((res)=>{
-            console.log(res)
+          this.$http.put(this.api+'/people/'+this.id,this.form).then((res)=>{
            if(res.status=='200'){
               this.$swal("Sucesso!","Cadastro editado com sucesso",'success')
             } else {
@@ -132,6 +139,9 @@
           })
         }
       },
+      cancel(){
+        this.$router.push({ path: `/`} )
+      }
     },
     
     mounted(){

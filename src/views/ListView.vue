@@ -36,7 +36,7 @@
     data(){
       return {
         people:[],
-        api: 'http://localhost:8080/api',
+        api: process.env.VUE_APP_API_URL,
         headers: 
           [
             {text: 'Nome',value:'name'},
@@ -81,6 +81,7 @@
     },
     mounted(){
       this.getPeople()
+      console.log(process.env.VUE_APP_API_URL)
     }
   }
 </script>
