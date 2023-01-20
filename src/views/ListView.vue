@@ -17,6 +17,11 @@
               <v-icon small class="mr-2" @click="editPeople(item.id)">mdi-pencil</v-icon>
               <v-icon small @click="deletePeople(item.id)">mdi-delete</v-icon>
             </template>
+             <template
+        v-slot:no-data
+      >
+        Nenhum registro encontrado
+      </template>
         </v-data-table>
     </v-col>
   </v-row>
@@ -49,11 +54,12 @@
         })
       },
       editPeople: function(id){
-        console.log(id);
+       this.$router.push({ path: `/edit/${id}` })
       },
       deletePeople:function(id){
         this.$http.delete(this.api+"/people/"+id).then((res)=>{
           console.log(res);
+          this.getPeople();
         })
       }
     },
