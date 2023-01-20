@@ -19,7 +19,7 @@ npm run serve
 
 ### Backend
 
-O projeto conta com uma base de dados no arquivo db.json que pode ser acessada através do json-server (fornecido na instalação dos pacotes quando ). Se faz necessário rodar esse servidor para comunicação com a api de cadastro.
+O projeto conta com uma base de dados no arquivo db.json que pode ser acessada através do json-server (fornecido na instalação dos pacotes). Se faz necessário rodar esse servidor para comunicação com a api de cadastro.
 
 Para rodar o json server, abra um prompt de comando separado do frontend, acesse o diretório do projeto e rode o comando:
  ```
