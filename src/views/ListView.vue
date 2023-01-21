@@ -50,7 +50,11 @@
     methods: {
       getPeople: function(){
         this.$http.get(this.api+"/people").then((res)=>{
+          if(res.status=='200'){
           this.people = res.data;
+          } else {
+            this.$swal("Erro!","Não foi possível retornar os dados","error")
+          }
         })
       },
       editPeople: function(id){
@@ -81,7 +85,6 @@
     },
     mounted(){
       this.getPeople()
-      console.log(process.env.VUE_APP_API_URL)
     }
   }
 </script>

@@ -117,7 +117,11 @@
     methods:{
       getById(id){
         this.$http.get(this.api+'/people/'+id).then((res)=>{
+          if(res.status=='200'){
           this.form = res.data;
+          } else {
+            this.$swal("Error!","Não foi possível retornar os dados da pessoa","error")
+          }
         })
       },
       save(){

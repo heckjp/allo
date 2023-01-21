@@ -3,7 +3,7 @@
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="text-h6">
-            <v-img src="../assets/allo_logo.png"></v-img>
+            <v-img src="../assets/allo_logo.png" width="50px" height="50px" class="ml-10"></v-img>
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
